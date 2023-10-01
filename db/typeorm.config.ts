@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { ConfigService } from '@nestjs/config';
 import { config } from 'dotenv';
-import { DataSourceOptions } from 'typeorm';
+import { DataSource, DataSourceOptions } from 'typeorm';
 config();
 
 const configService = new ConfigService();
@@ -16,3 +16,6 @@ export const dataSourceOptions: DataSourceOptions = {
   entities: ['dist/**/*.entity.js'],
   migrations: ['dist/db/migrations/*.js'],
 };
+
+const dataSource = new DataSource(dataSourceOptions);
+export default dataSource;
